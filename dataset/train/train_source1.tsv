@@ -1,0 +1,121 @@
+entity_id	business_name	business_address	country
+S1-00001	Apex Global Logistics	1200 Industrial Pkwy, Suite 300, Cleveland, OH 44135	US
+S1-00002	Blue Horizon Financial Services	450 Lexington Ave, 14th Floor, New York, NY 10017	US
+S1-00003	Cascade Mountain Healthcare Clinic	8820 Wilshire Blvd, Suite 210, Beverly Hills, CA 90211	US
+S1-00004	Delta Precision Manufacturing Inc	5500 Technology Dr, Building B, Austin, TX 78754	US
+S1-00005	Echo River Software Solutions	101 California St, Suite 1900, San Francisco, CA 94111	US
+S1-00006	Frontier Energy Partners	1000 Louisiana St, Suite 4300, Houston, TX 77002	US
+S1-00007	Golden Gate Culinary Group LLC	300 Montgomery St, San Francisco, CA 94104	US
+S1-00008	Harborview Maritime Transport Co	200 Seaport Blvd, Boston, MA 02210	US
+S1-00009	Ironclad Security Systems	701 Pennsylvania Ave NW, Washington, DC 20004	US
+S1-00010	Juniper BioPharmaceuticals Inc	600 Technology Square, Cambridge, MA 02139	US
+S1-00011	Keystone Construction & Development	1735 Market St, Suite 2800, Philadelphia, PA 19103	US
+S1-00012	Liberty Star Retail Ventures	500 8th Ave, New York, NY 10018	US
+S1-00013	Magnolia Hospitality Group	201 St Charles Ave, Suite 2500, New Orleans, LA 70170	US
+S1-00014	Nexus Data Analytics Corp	111 W Jackson Blvd, Suite 1700, Chicago, IL 60604	US
+S1-00015	Oakridge Agricultural Supply	400 Locust St, Suite 790, Des Moines, IA 50309	US
+S1-00016	Pacific Crest Engineering Consultants	1201 3rd Ave, Suite 2200, Seattle, WA 98101	US
+S1-00017	Quantum Robotics & Automation	255 Main St, 8th Floor, Cambridge, MA 02142	US
+S1-00018	Redwood Digital Media LLC	1600 Amphitheatre Pkwy, Mountain View, CA 94043	US
+S1-00019	Summit Ridge Capital Management	200 Park Ave, 38th Floor, New York, NY 10166	US
+S1-00020	Trillium Chemical Laboratories	300 Delaware Ave, Suite 900, Wilmington, DE 19801	US
+S1-00021	Urban Pulse Marketing Agency	600 Brickell Ave, Suite 1900, Miami, FL 33131	US
+S1-00022	Vanguard Aerospace Components	2350 E El Segundo Blvd, El Segundo, CA 90245	US
+S1-00023	Wavelength Wireless Communications	6500 S Quebec St, Greenwood Village, CO 80111	US
+S1-00024	Xenon Environmental Technologies	1700 Lincoln St, Suite 3200, Denver, CO 80203	US
+S1-00025	Yellowstone Renewable Power Corp	303 N Broadway, Suite 400, Billings, MT 59101	US
+S1-00026	Zenith Cloud Infrastructure Inc	500 108th Ave NE, Suite 1100, Bellevue, WA 98004	US
+S1-00027	Alliance Medical Diagnostics	7500 Cambridge St, Suite 1200, Houston, TX 77054	US
+S1-00028	Beacon Hill Property Advisors	100 High St, 24th Floor, Boston, MA 02110	US
+S1-00029	Canyon State Heavy Equipment	2400 E Camelback Rd, Suite 800, Phoenix, AZ 85016	US
+S1-00030	Discovery Marine Research Institute	1000 Harbor Blvd, Weehawken, NJ 07086	US
+S1-00031	Shree Balaji Infotech Private Limited	Plot No 45, Electronic City Phase 1, Hosur Road, Bangalore, Karnataka 560100	India
+S1-00032	Mahalaxmi Textiles & Garments Ltd	12/4 Ring Road, Near Surat Textile Market, Surat, Gujarat 395002	India
+S1-00033	Krishna Engineering Works	B-22 Industrial Estate, Phase 2, Okhla, New Delhi, Delhi 110020	India
+S1-00034	Om Sai Agro Industries Pvt Ltd	Survey No 88, Near Toll Plaza, Pune-Nagar Road, Pune, Maharashtra 412207	India
+S1-00035	Suryavanshi Pharmaceuticals Ltd	IDA Uppal, Near Asian Paints Factory, Hyderabad, Telangana 500039	India
+S1-00036	Venkateshwara Motors & Spares	Shop No 14, Opposite Bus Stand, Anna Salai, Chennai, Tamil Nadu 600002	India
+S1-00037	Tirupati Logistics & Warehousing	NH 48, Behind HP Petrol Pump, Nelamangala, Bangalore, Karnataka 562123	India
+S1-00038	Ganesh Metal Casting Corporation	MIDC Area, Plot 105, Waluj Industrial Zone, Aurangabad, Maharashtra 431136	India
+S1-00039	Navkar Jewelers Private Limited	89 Zaveri Bazaar, Opposite Mumbadevi Temple, Mumbai, Maharashtra 400002	India
+S1-00040	Anand Electricals & Automation	Sector 18, Block B, Opposite Metro Pillar 42, Noida, Uttar Pradesh 201301	India
+S1-00041	Radhe Shyam Dairy Products	GIDC Estate, Plot 14, National Highway 8, Anand, Gujarat 388001	India
+S1-00042	Siddhivinayak Healthcare Clinic	Plot 55, Shivaji Park, Near Dadar Railway Station, Mumbai, Maharashtra 400028	India
+S1-00043	Maruti Plastics & Polymers	Shed 12, Focal Point Industrial Area, Ludhiana, Punjab 141010	India
+S1-00044	Chamunda Mining & Minerals Corp	Adarsh Nagar, Opp District Court, Udaipur, Rajasthan 313001	India
+S1-00045	Kaveri Water Solutions Ltd	3rd Cross, Gandhinagar, Near Corporation Bank, Mysore, Karnataka 570009	India
+S1-00046	Pooja Chemical Industries	GIDC Chemical Zone, Plot 210, Ankleshwar, Gujarat 393002	India
+S1-00047	Meenakshi Software Technologies	1st Main Road, Tidel Park, Tharamani, Chennai, Tamil Nadu 600113	India
+S1-00048	Bajrang Steel Rolling Mills	GT Road, Near Overbridge, Mandi Gobindgarh, Punjab 147301	India
+S1-00049	Gayatridevi Silk Weaving Mills	Khadki Gate, Near Bada Chauraha, Varanasi, Uttar Pradesh 221001	India
+S1-00050	Rajarajeshwari Paper Mill Ltd	Industrial Corridor, NH 16, Rajahmundry, Andhra Pradesh 533101	India
+S1-00051	Aparna Diagnostics & Labs	Opposite City Civil Court, Ameerpet, Hyderabad, Telangana 500016	India
+S1-00052	Kailash Timber Mart	Timber Market Road, Near Lakdi Pul, Pune, Maharashtra 411030	India
+S1-00053	Lakshmi Narayan Trading Enterprise	Chowringhee Lane, Near Esplanade Metro, Kolkata, West Bengal 700013	India
+S1-00054	Saraswati Publications & Printers	Daryaganj, Ansari Road, Near Police Station, New Delhi, Delhi 110002	India
+S1-00055	Amba Bhavani Cold Storage	Cold Storage Complex, APMC Yard, Guntur, Andhra Pradesh 522004	India
+S1-00056	Swastik Cotton Ginning Factory	Khamgaon Road, Near Cotton Market, Akola, Maharashtra 444001	India
+S1-00057	Vardhman Spinners & Weavers	Industrial Area A, Ludhiana, Punjab 141003	India
+S1-00058	Durga Heavy Transporters Pvt Ltd	Transport Nagar, Ring Road 2, Bilaspur, Chhattisgarh 495001	India
+S1-00059	Karpagam Engineering Works	SIDCO Industrial Estate, Kurichi, Coimbatore, Tamil Nadu 641021	India
+S1-00060	Gokul Confectioneries & Bakery	Main Market, Sadar Bazaar, Opposite Town Hall, Jodhpur, Rajasthan 342001	India
+S1-00061	Apex Global Logistics 2	1200 Industrial Pkwy, Suite 300, Cleveland, OH 44135	US
+S1-00062	Blue Horizon Financial Services 2	450 Lexington Ave, 14th Floor, New York, NY 10017	US
+S1-00063	Cascade Mountain Healthcare Clinic 2	8820 Wilshire Blvd, Suite 210, Beverly Hills, CA 90211	US
+S1-00064	Delta Precision Manufacturing Inc 2	5500 Technology Dr, Building B, Austin, TX 78754	US
+S1-00065	Echo River Software Solutions 2	101 California St, Suite 1900, San Francisco, CA 94111	US
+S1-00066	Frontier Energy Partners 2	1000 Louisiana St, Suite 4300, Houston, TX 77002	US
+S1-00067	Golden Gate Culinary Group LLC 2	300 Montgomery St, San Francisco, CA 94104	US
+S1-00068	Harborview Maritime Transport Co 2	200 Seaport Blvd, Boston, MA 02210	US
+S1-00069	Ironclad Security Systems 2	701 Pennsylvania Ave NW, Washington, DC 20004	US
+S1-00070	Juniper BioPharmaceuticals Inc 2	600 Technology Square, Cambridge, MA 02139	US
+S1-00071	Keystone Construction & Development 2	1735 Market St, Suite 2800, Philadelphia, PA 19103	US
+S1-00072	Liberty Star Retail Ventures 2	500 8th Ave, New York, NY 10018	US
+S1-00073	Magnolia Hospitality Group 2	201 St Charles Ave, Suite 2500, New Orleans, LA 70170	US
+S1-00074	Nexus Data Analytics Corp 2	111 W Jackson Blvd, Suite 1700, Chicago, IL 60604	US
+S1-00075	Oakridge Agricultural Supply 2	400 Locust St, Suite 790, Des Moines, IA 50309	US
+S1-00076	Pacific Crest Engineering Consultants 2	1201 3rd Ave, Suite 2200, Seattle, WA 98101	US
+S1-00077	Quantum Robotics & Automation 2	255 Main St, 8th Floor, Cambridge, MA 02142	US
+S1-00078	Redwood Digital Media LLC 2	1600 Amphitheatre Pkwy, Mountain View, CA 94043	US
+S1-00079	Summit Ridge Capital Management 2	200 Park Ave, 38th Floor, New York, NY 10166	US
+S1-00080	Trillium Chemical Laboratories 2	300 Delaware Ave, Suite 900, Wilmington, DE 19801	US
+S1-00081	Urban Pulse Marketing Agency 2	600 Brickell Ave, Suite 1900, Miami, FL 33131	US
+S1-00082	Vanguard Aerospace Components 2	2350 E El Segundo Blvd, El Segundo, CA 90245	US
+S1-00083	Wavelength Wireless Communications 2	6500 S Quebec St, Greenwood Village, CO 80111	US
+S1-00084	Xenon Environmental Technologies 2	1700 Lincoln St, Suite 3200, Denver, CO 80203	US
+S1-00085	Yellowstone Renewable Power Corp 2	303 N Broadway, Suite 400, Billings, MT 59101	US
+S1-00086	Zenith Cloud Infrastructure Inc 2	500 108th Ave NE, Suite 1100, Bellevue, WA 98004	US
+S1-00087	Alliance Medical Diagnostics 2	7500 Cambridge St, Suite 1200, Houston, TX 77054	US
+S1-00088	Beacon Hill Property Advisors 2	100 High St, 24th Floor, Boston, MA 02110	US
+S1-00089	Canyon State Heavy Equipment 2	2400 E Camelback Rd, Suite 800, Phoenix, AZ 85016	US
+S1-00090	Discovery Marine Research Institute 2	1000 Harbor Blvd, Weehawken, NJ 07086	US
+S1-00091	Shree Balaji Infotech Private Limited 2	Plot No 45, Electronic City Phase 1, Hosur Road, Bangalore, Karnataka 560100	India
+S1-00092	Mahalaxmi Textiles & Garments Ltd 2	12/4 Ring Road, Near Surat Textile Market, Surat, Gujarat 395002	India
+S1-00093	Krishna Engineering Works 2	B-22 Industrial Estate, Phase 2, Okhla, New Delhi, Delhi 110020	India
+S1-00094	Om Sai Agro Industries Pvt Ltd 2	Survey No 88, Near Toll Plaza, Pune-Nagar Road, Pune, Maharashtra 412207	India
+S1-00095	Suryavanshi Pharmaceuticals Ltd 2	IDA Uppal, Near Asian Paints Factory, Hyderabad, Telangana 500039	India
+S1-00096	Venkateshwara Motors & Spares 2	Shop No 14, Opposite Bus Stand, Anna Salai, Chennai, Tamil Nadu 600002	India
+S1-00097	Tirupati Logistics & Warehousing 2	NH 48, Behind HP Petrol Pump, Nelamangala, Bangalore, Karnataka 562123	India
+S1-00098	Ganesh Metal Casting Corporation 2	MIDC Area, Plot 105, Waluj Industrial Zone, Aurangabad, Maharashtra 431136	India
+S1-00099	Navkar Jewelers Private Limited 2	89 Zaveri Bazaar, Opposite Mumbadevi Temple, Mumbai, Maharashtra 400002	India
+S1-00100	Anand Electricals & Automation 2	Sector 18, Block B, Opposite Metro Pillar 42, Noida, Uttar Pradesh 201301	India
+S1-00101	Radhe Shyam Dairy Products 2	GIDC Estate, Plot 14, National Highway 8, Anand, Gujarat 388001	India
+S1-00102	Siddhivinayak Healthcare Clinic 2	Plot 55, Shivaji Park, Near Dadar Railway Station, Mumbai, Maharashtra 400028	India
+S1-00103	Maruti Plastics & Polymers 2	Shed 12, Focal Point Industrial Area, Ludhiana, Punjab 141010	India
+S1-00104	Chamunda Mining & Minerals Corp 2	Adarsh Nagar, Opp District Court, Udaipur, Rajasthan 313001	India
+S1-00105	Kaveri Water Solutions Ltd 2	3rd Cross, Gandhinagar, Near Corporation Bank, Mysore, Karnataka 570009	India
+S1-00106	Pooja Chemical Industries 2	GIDC Chemical Zone, Plot 210, Ankleshwar, Gujarat 393002	India
+S1-00107	Meenakshi Software Technologies 2	1st Main Road, Tidel Park, Tharamani, Chennai, Tamil Nadu 600113	India
+S1-00108	Bajrang Steel Rolling Mills 2	GT Road, Near Overbridge, Mandi Gobindgarh, Punjab 147301	India
+S1-00109	Gayatridevi Silk Weaving Mills 2	Khadki Gate, Near Bada Chauraha, Varanasi, Uttar Pradesh 221001	India
+S1-00110	Rajarajeshwari Paper Mill Ltd 2	Industrial Corridor, NH 16, Rajahmundry, Andhra Pradesh 533101	India
+S1-00111	Aparna Diagnostics & Labs 2	Opposite City Civil Court, Ameerpet, Hyderabad, Telangana 500016	India
+S1-00112	Kailash Timber Mart 2	Timber Market Road, Near Lakdi Pul, Pune, Maharashtra 411030	India
+S1-00113	Lakshmi Narayan Trading Enterprise 2	Chowringhee Lane, Near Esplanade Metro, Kolkata, West Bengal 700013	India
+S1-00114	Saraswati Publications & Printers 2	Daryaganj, Ansari Road, Near Police Station, New Delhi, Delhi 110002	India
+S1-00115	Amba Bhavani Cold Storage 2	Cold Storage Complex, APMC Yard, Guntur, Andhra Pradesh 522004	India
+S1-00116	Swastik Cotton Ginning Factory 2	Khamgaon Road, Near Cotton Market, Akola, Maharashtra 444001	India
+S1-00117	Vardhman Spinners & Weavers 2	Industrial Area A, Ludhiana, Punjab 141003	India
+S1-00118	Durga Heavy Transporters Pvt Ltd 2	Transport Nagar, Ring Road 2, Bilaspur, Chhattisgarh 495001	India
+S1-00119	Karpagam Engineering Works 2	SIDCO Industrial Estate, Kurichi, Coimbatore, Tamil Nadu 641021	India
+S1-00120	Gokul Confectioneries & Bakery 2	Main Market, Sadar Bazaar, Opposite Town Hall, Jodhpur, Rajasthan 342001	India

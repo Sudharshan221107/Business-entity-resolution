@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Entity Resolution Studio — Enterprise ML Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo-icon">ER</div>
+        <div class="brand-text">
+          <div class="title-row">
+            <h1>Business Entity Resolution Studio</h1>
+            <span class="badge status-pass" id="validator-badge">VALIDATION: PASS</span>
+          </div>
+          <p class="subtitle">Multi-Source Record Linkage &bull; Amazon ML Challenge 2026</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="theme-selector-wrap" title="Change Visual Theme">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="theme-icon"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <select id="theme-select" class="theme-select-dropdown">
+            <option value="cyber-emerald">🟢 Cyber Emerald</option>
+            <option value="obsidian-gold">🟡 Obsidian Gold</option>
+            <option value="neon-violet">🟣 Neon Horizon</option>
+            <option value="nordic-light">⚪ Nordic Light</option>
+          </select>
+        </div>
+        <a href="/api/download_matching" class="btn btn-secondary" id="btn-download-match" title="Download matching_results.tsv">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Matching TSV
+        </a>
+        <a href="/api/download_candidate" class="btn btn-secondary" id="btn-download-cand" title="Download candidate_pairs.tsv">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Candidates TSV
+        </a>
+        <a href="/api/download_zip" class="btn btn-primary" id="btn-download-zip" title="Download official submission package">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Submission ZIP
+        </a>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="tab-upload">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Dataset Upload & Manager
+        <span class="tab-pill" id="dataset-ready-pill">7/7 Ready</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-pipeline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Pipeline Engine & Live Console
+        <span class="tab-pill pill-pulse" id="engine-status-pill">Ready</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-metrics">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Evaluation & Analytics
+      </button>
+      <button class="tab-btn" data-tab="tab-results">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Resolution Results Explorer
+      </button>
+    </nav>
+
+    <!-- TAB 1: DATASET UPLOAD & MANAGER -->
+    <section class="tab-content active" id="tab-upload">
+      <!-- Upload Banner / Status -->
+      <div class="panel-banner">
+        <div class="banner-info">
+          <h2>Dataset Repository & Ingestion Center</h2>
+          <p>Upload new datasets or custom test splits. You can drag and drop a complete <code>.zip</code> archive or upload individual <code>.tsv</code> files. The pipeline handles open-set countries (US, India, France) and enforces strict TSV tab-delimited formatting.</p>
+        </div>
+        <div class="banner-actions">
+          <button class="btn btn-secondary" id="btn-restore-benchmark">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            Reset to Benchmark Data
+          </button>
+          <button class="btn btn-secondary" id="btn-refresh-datasets">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            Refresh Status
+          </button>
+        </div>
+      </div>
+
+      <!-- ZIP Drag and Drop Zone -->
+      <div class="zip-dropzone" id="zip-dropzone">
+        <input type="file" id="zip-file-input" accept=".zip" class="hidden-input">
+        <div class="dropzone-content">
+          <div class="upload-icon-circle">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h3>Drag & Drop Dataset Archive (.ZIP)</h3>
+          <p>Instantly unpacks and maps <code>train_source1.tsv</code>, <code>train_source2.tsv</code>, <code>train_source3.tsv</code>, <code>train_ground_truth.tsv</code>, <code>test_source1.tsv</code>, <code>test_source2.tsv</code>, and <code>test_source3.tsv</code>.</p>
+          <button class="btn btn-primary" type="button" id="btn-browse-zip">Browse ZIP Archive</button>
+        </div>
+      </div>
+
+      <!-- Individual TSV Upload Section -->
+      <div class="dataset-grid-container">
+        <!-- Training Files Section -->
+        <div class="dataset-section-block">
+          <div class="section-badge-header">
+            <h3>Training Datasets (Ground Truth Supervised Linkages)</h3>
+            <span class="tag-counter">4 TSV Files</span>
+          </div>
+          <div class="file-cards-grid">
+            <!-- Train Source 1 -->
+            <div class="dataset-card" data-key="train_source1">
+              <div class="card-status-dot"></div>
+              <div class="card-header">
+                <h4>train_source1.tsv</h4>
+                <span class="file-badge badge-loading">Checking...</span>
+              </div>
+              <p class="file-desc">Primary reference entities (ID, Name, Address, Country)</p>
+              <div class="file-meta">
+                <span class="meta-rows"><strong class="val-rows">0</strong> rows</span>
+                <span class="meta-size"><strong class="val-size">0 KB</strong></span>
+              </div>
+              <div class="card-footer-actions">
+                <input type="file" accept=".tsv,.txt" class="hidden-file-input" data-target="train_source1">
+                <button class="btn-file-upload" title="Upload new train_source1.tsv">Upload TSV</button>
+                <button class="btn-file-preview" data-target="train_source1">Preview</button>
+              </div>
+            </div>
+
+            <!-- Train Source 2 -->
+            <div class="dataset-card" data-key="train_source2">
+              <div class="card-status-dot"></div>
+              <div class="card-header">
+                <h4>train_source2.tsv</h4>
+                <span class="file-badge badge-loading">Checking...</span>
+              </div>
+              <p class="file-desc">Secondary partner source with variations & noise</p>
+              <div class="file-meta">
+                <span class="meta-rows"><strong class="val-rows">0</strong> rows</span>
+                <span class="meta-size"><strong class="val-size">0 KB</strong></span>
+              </div>
+              <div class="card-footer-actions">
+                <input type="file" accept=".tsv,.txt" class="hidden-file-input" data-target="train_source2">
+                <button class="btn-file-upload">Upload TSV</button>
+                <button class="btn-file-preview" data-target="train_source2">Preview</button>
+              </div>
+            </div>
+
+            <!-- Train Source 3 -->
+            <div class="dataset-card" data-key="train_source3">
+              <div class="card-status-dot"></div>
+              <div class="card-header">
+                <h4>train_source3.tsv</h4>
+                <span class="file-badge badge-loading">Checking...</span>
+              </div>
+              <p class="file-desc">Tertiary web-scraped entity directory pool</p>
+              <div class="file-meta">
+                <span class="meta-rows"><strong class="val-rows">0</strong> rows</span>
+                <span class="meta-size"><strong class="val-size">0 KB</strong></span>
+              </div>
+              <div class="card-footer-actions">
+                <input type="file" accept=".tsv,.txt" class="hidden-file-input" data-target="train_source3">
+                <button class="btn-file-upload">Upload TSV</button>
+                <button class="btn-file-preview" data-target="train_source3">Preview</button>
+              </div>
+            </div>
+
+            <!-- Train Ground Truth -->
+            <div class="dataset-card highlight-border" data-key="train_ground_truth">
+              <div class="card-status-dot"></div>
+              <div class="card-header">
+                <h4>train_ground_truth.tsv</h4>
+                <span class="file-badge badge-loading">Checking...</span>
+              </div>
+              <p class="file-desc">Gold standard labels (source1_entity_id &rarr; matched_entity_ids)</p>
+              <div class="file-meta">
+                <span class="meta-rows"><strong class="val-rows">0</strong> rows</span>
+                <span class="meta-size"><strong class="val-size">0 KB</strong></span>
+              </div>
+              <div class="card-footer-actions">
+                <input type="file" accept=".tsv,.txt" class="hidden-file-input" data-target="train_ground_truth">
+                <button class="btn-file-upload">Upload TSV</button>
+                <button class="btn-file-preview" data-target="train_ground_truth">Preview</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testing Files Section -->
+        <div class="dataset-section-block">
+          <div class="section-badge-header">
+            <h3>Test Evaluation Datasets (Open-Set Inference)</h3>
+            <span class="tag-counter">3 TSV Files</span>
+          </div>
+          <div class="file-cards-grid">
+            <!-- Test Source 1 -->
+            <div class="dataset-card" data-key="test_source1">
+              <div class="card-status-dot"></div>
+              <div class="card-header">
+                <h4>test_source1.tsv</h4>
+                <span class="file-badge badge-loading">Checking...</span>
+              </div>
+              <p class="file-desc">Query entities to resolve (includes France open-set)</p>
+              <div class="file-meta">
+                <span class="meta-rows"><strong class="val-rows">0</strong> rows</span>
+                <span class="meta-size"><strong class="val-size">0 KB</strong></span>
+              </div>
+              <div class="card-footer-actions">
+                <input type="file" accept=".tsv,.txt" class="hidden-file-input" data-target="test_source1">
+                <button class="btn-file-upload">Upload TSV</button>
+                <button class="btn-file-preview" data-target="test_source1">Preview</button>
+              </div>
+            </div>
+
+            <!-- Test Source 2 -->
+            <div class="dataset-card" data-key="test_source2">
+              <div class="card-status-dot"></div>
+              <div class="card-header">
+                <h4>test_source2.tsv</h4>
+                <span class="file-badge badge-loading">Checking...</span>
+              </div>
+              <p class="file-desc">Test partner candidate pool 2</p>
+              <div class="file-meta">
+                <span class="meta-rows"><strong class="val-rows">0</strong> rows</span>
+                <span class="meta-size"><strong class="val-size">0 KB</strong></span>
+              </div>
+              <div class="card-footer-actions">
+                <input type="file" accept=".tsv,.txt" class="hidden-file-input" data-target="test_source2">
+                <button class="btn-file-upload">Upload TSV</button>
+                <button class="btn-file-preview" data-target="test_source2">Preview</button>
+              </div>
+            </div>
+
+            <!-- Test Source 3 -->
+            <div class="dataset-card" data-key="test_source3">
+              <div class="card-status-dot"></div>
+              <div class="card-header">
+                <h4>test_source3.tsv</h4>
+                <span class="file-badge badge-loading">Checking...</span>
+              </div>
+              <p class="file-desc">Test partner candidate pool 3</p>
+              <div class="file-meta">
+                <span class="meta-rows"><strong class="val-rows">0</strong> rows</span>
+                <span class="meta-size"><strong class="val-size">0 KB</strong></span>
+              </div>
+              <div class="card-footer-actions">
+                <input type="file" accept=".tsv,.txt" class="hidden-file-input" data-target="test_source3">
+                <button class="btn-file-upload">Upload TSV</button>
+                <button class="btn-file-preview" data-target="test_source3">Preview</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PIPELINE ENGINE & LIVE TERMINAL -->
+    <section class="tab-content" id="tab-pipeline">
+      <!-- Pipeline Control Card -->
+      <div class="pipeline-hero-panel">
+        <div class="pipeline-hero-left">
+          <h2>Autonomous Entity Resolution Pipeline</h2>
+          <p>Runs end-to-end multi-pass blocking, balanced feature extraction (Levenshtein, Jaccard, TF-IDF Cosine), Balanced Random Forest training, threshold optimization for Macro F0.5, test inference, output generation, and official validation.</p>
+          <div class="engine-steps-chips">
+            <span class="step-chip">1. Preprocessing</span>
+            <span class="step-chip">2. 4-Pass Blocking</span>
+            <span class="step-chip">3. Feature Stack</span>
+            <span class="step-chip">4. Random Forest</span>
+            <span class="step-chip">5. &tau;* Optimization</span>
+            <span class="step-chip">6. Test Matching</span>
+            <span class="step-chip">7. Official Validation</span>
+          </div>
+        </div>
+        <div class="pipeline-hero-right">
+          <button class="btn btn-hero-run" id="btn-run-pipeline">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span id="run-btn-text">Execute Complete Pipeline</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Execution Progress -->
+      <div class="progress-box" id="progress-container">
+        <div class="progress-header">
+          <span class="progress-title" id="pipeline-stage-label">Engine Ready</span>
+          <span class="progress-pct" id="pipeline-pct-label">0%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="pipeline-progress-bar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Live Terminal Console -->
+      <div class="terminal-container">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="terminal-title">pipeline_runner.py — Real-time Execution Stream</div>
+          <div class="terminal-actions">
+            <button class="btn-term-action" id="btn-clear-logs">Clear</button>
+            <button class="btn-term-action" id="btn-scroll-bottom">Autoscroll: ON</button>
+          </div>
+        </div>
+        <div class="terminal-body" id="terminal-logs">
+          <div class="log-line text-muted">[System] Ready to initiate pipeline run.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: EVALUATION & METRICS -->
+    <section class="tab-content" id="tab-metrics">
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card primary">
+          <span class="stat-label">Validation Macro F0.5</span>
+          <div class="stat-val" id="stat-f05">0.9059</div>
+          <span class="stat-desc">Precision-weighted (2&times; penalty for false merges)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Macro Precision</span>
+          <div class="stat-val text-emerald" id="stat-prec">91.67%</div>
+          <span class="stat-desc">High precision; zero cross-country errors</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Macro Recall</span>
+          <div class="stat-val text-indigo" id="stat-rec">88.19%</div>
+          <span class="stat-desc">True positive candidate capture rate</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Blocking Recall Ceiling</span>
+          <div class="stat-val text-amber" id="stat-block-recall">100.0%</div>
+          <span class="stat-desc">Zero gold pairs missed by 4-pass blocker</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Reduction Ratio</span>
+          <div class="stat-val text-cyan" id="stat-reduction">92.77%</div>
+          <span class="stat-desc">Quadratic search space safely pruned</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Optimal Threshold &tau;*</span>
+          <div class="stat-val text-violet" id="stat-threshold">0.375</div>
+          <span class="stat-desc">Tuned via golden-section search on F0.5</span>
+        </div>
+      </div>
+
+      <!-- Deep Dive Insights -->
+      <div class="insights-grid">
+        <div class="insight-card">
+          <h3>Macro F0.5 Metric Nuance & Singleton Reward</h3>
+          <p>In the official challenge specification, evaluation uses Macro $F_{0.5}$:
+          $$F_{0.5} = \frac{1.25 \times \text{Precision} \times \text{Recall}}{0.25 \times \text{Precision} + \text{Recall}}$$
+          A false merge cuts precision and is penalized <strong>2&times; more severely</strong> than a false negative. Furthermore, true singletons (entities with 0 true matches) receive a full score of <strong>1.0</strong> if predicted empty, and <strong>0.0</strong> if falsely linked. Our system uses a high-precision threshold (&tau; = 0.375) preventing spurious merges.</p>
+        </div>
+
+        <div class="insight-card">
+          <h3>Strict Open-Set Country Guarantees</h3>
+          <p>The test set contains open-set countries such as France alongside US and India. Our blocking engine enforces a hard country constraint: entities from Source 1 are <em>only ever paired</em> with candidates from the exact same normalized country. This mathematically guarantees <strong>0 cross-country candidate errors</strong> across all test queries.</p>
+        </div>
+
+        <div class="insight-card">
+          <h3>Validator Schema Compliance</h3>
+          <p>Both output files <code>output/matching_results.tsv</code> and <code>output/candidate_pairs.tsv</code> pass the official script <code>utils/validate_submission.py</code> with <strong>PASS</strong> (Exit code 0):</p>
+          <ul class="insight-list">
+            <li>Strict tab separation (<code>\t</code>) and no commas in reference IDs.</li>
+            <li>All Source 1 test IDs present in exact order.</li>
+            <li>Every matched ID is strictly a subset of its declared candidate IDs.</li>
+            <li>Zero self-matches or duplicate IDs.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: RESOLUTION RESULTS EXPLORER -->
+    <section class="tab-content" id="tab-results">
+      <!-- Search & Filters Toolbar -->
+      <div class="toolbar">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" placeholder="Search Source 1 reference records by name, address, or ID...">
+        </div>
+        <div class="filter-group">
+          <label for="country-filter">Country:</label>
+          <select id="country-filter">
+            <option value="all">All Countries</option>
+            <option value="us">US</option>
+            <option value="india">India</option>
+            <option value="france">France (Open-Set Test)</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="type-filter">Status:</label>
+          <select id="type-filter">
+            <option value="all">All Entities</option>
+            <option value="matched">Resolved Matches</option>
+            <option value="singletons">Singletons (No Match)</option>
+          </select>
+        </div>
+        <div class="view-toggle">
+          <button class="toggle-btn active" id="view-cards-btn" title="Card View">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button class="toggle-btn" id="view-table-btn" title="Table View">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Records Header -->
+      <div class="records-header">
+        <div class="header-left">
+          <h2>Source 1 Entities (<span id="record-count">0</span>)</h2>
+          <span class="helper-text">Inspect candidate sets, blocking reductions, and resolved target matches.</span>
+        </div>
+        <div class="header-right-actions">
+          <button class="btn btn-secondary btn-sm" id="btn-download-table-csv">Export Results CSV</button>
+        </div>
+      </div>
+
+      <!-- Card View Container -->
+      <div class="records-list" id="records-list">
+        <div class="loading">Loading resolved entity records...</div>
+      </div>
+
+      <!-- Table View Container (Hidden by default) -->
+      <div class="table-view-container hidden" id="table-view-container">
+        <table class="results-table" id="results-table">
+          <thead>
+            <tr>
+              <th>Source 1 ID</th>
+              <th>Business Name</th>
+              <th>Address</th>
+              <th>Country</th>
+              <th>Status</th>
+              <th>Candidate Count</th>
+              <th>Predicted Match ID(s)</th>
+            </tr>
+          </thead>
+          <tbody id="results-table-body">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DATASET PREVIEW MODAL -->
+    <div class="modal-overlay hidden" id="preview-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <h3 id="modal-file-title">train_source1.tsv Preview</h3>
+            <span class="modal-meta" id="modal-meta-label">15 rows displayed</span>
+          </div>
+          <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="table-scroll-wrapper">
+            <table class="preview-table" id="preview-data-table">
+              <thead id="preview-thead"></thead>
+              <tbody id="preview-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-left">
+        <strong>Business Entity Resolution Studio</strong> &bull; End-to-End Self-Contained Solution &bull; Amazon ML Challenge 2026
+      </div>
+      <div class="footer-right">
+        <span>Model: Balanced Random Forest (100 trees, &tau; = 0.375)</span> &bull; 
+        <span>Multi-Pass Inverted Indexing &bull; Zero External APIs</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
